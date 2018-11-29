@@ -1,5 +1,12 @@
 <?php
+/*
+Clase Cart controller
+Controllador de los Productos,
+Las acciones que se dan en esta clase Productos
+son Agregar Modificar Eliminar y la Vista del carrito.
+*/
 
+//Instancia
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,6 +15,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
 
+//clase controller Carrito compras
 class CartController extends Controller
 {
 	public function __construct()
@@ -15,7 +23,7 @@ class CartController extends Controller
 		if(!\Session::has('cart')) \Session::put('cart', array());
 	}
 
-    // Show cart
+    // mostramos el carrito
     public function show()
     {
     	$cart = \Session::get('cart');
@@ -23,7 +31,7 @@ class CartController extends Controller
     	return view('store.cart', compact('cart', 'total'));
     }
 
-    // Add item
+    // Agregamos los productos al carrito 
     public function add(Product $product)
     {
     	$cart = \Session::get('cart');
@@ -34,7 +42,7 @@ class CartController extends Controller
     	return redirect()->route('cart-show');
     }
 
-    // Delete item
+    // Eliminamos el carrito de compras
     public function delete(Product $product)
     {
     	$cart = \Session::get('cart');
@@ -44,7 +52,7 @@ class CartController extends Controller
     	return redirect()->route('cart-show');
     }
 
-    // Update item
+    // Modificamos el carrito de compras
     public function update(Product $product, $quantity)
     {
     	$cart = \Session::get('cart');
@@ -54,7 +62,7 @@ class CartController extends Controller
     	return redirect()->route('cart-show');
     }
 
-    // Trash cart
+    // Carrito que eliminamos
     public function trash()
     {
     	\Session::forget('cart');
@@ -62,7 +70,7 @@ class CartController extends Controller
     	return redirect()->route('cart-show');
     }
 
-    // Total
+    // Total del carrito de compras
     private function total()
     {
     	$cart = \Session::get('cart');
@@ -83,4 +91,42 @@ class CartController extends Controller
 
         return view('store.order-detail', compact('cart', 'total'));
     }
+    //Guardar el proceso del carrito
+    public function saveOrder()
+    {
+    $cart = \Session::get('cart');
+    $subtotal = 0;
+    foreach($cart as $item){
+    $subtotal += $item->price * $item->quantity;
+    }
+
+    $order = Order::create([
+    'subtotal' => $subtotal,
+    'shipping' => 100,
+    'user_id' => \Auth::user()->id
+    ]);
+
+    foreach($cart as $item){
+    $this->saveOrderItem($item, $order->id);
+    }
+    return redirect()->route('cart-show');
+    }
+
+    //Salvar la orden del carrio con sus datos dentro
+    private function saveOrderItem($item, $order_id)
+    {
+    OrderItem::create([
+    'quantity' => $item->quantity,
+    'price' => $item->price,
+    'product_id' => $item->id,
+    'order_id' => $order_id
+    ]);
+    }
+
+
+
+
+
 }
+
+

@@ -1,5 +1,5 @@
 <?php
-
+//Instancia
 namespace App\Http\Controllers\Auth;
 
 use App\User;
@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+//Controlador del usuario
 class AuthController extends Controller
 {
     /*
@@ -14,9 +15,10 @@ class AuthController extends Controller
     | Registration & Login Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
+    | 
+      Actualizar el especificado. Este controlador maneja el registro de nuevos usuarios, así como el
+    | Autentificación de usuarios existentes. Por defecto, este controlador utiliza
+    | Un rasgo simple para agregar estos comportamientos. ¿Por qué no lo exploras? Recurso en almacenamiento.
     |
     */
 
@@ -26,7 +28,7 @@ class AuthController extends Controller
     //protected $redirectAfterLogout = "/auth/login";
 
     /**
-     * Create a new authentication controller instance.
+     * Crear una nueva instancia de controlador de autenticación.
      *
      * @return void
      */
@@ -36,11 +38,13 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Obtener un validador para una solicitud de registro entrante.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    //esta funcion valida los datos del registro
+    //Si todos los datos son los que debe de estar insertando
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -54,11 +58,12 @@ class AuthController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Crear una nueva instancia de usuario después de un registro válido.
      *
      * @param  array  $data
      * @return User
      */
+    //Esta funcion hace el registro del cliente o usuario
     protected function create(array $data)
     {
         return User::create([

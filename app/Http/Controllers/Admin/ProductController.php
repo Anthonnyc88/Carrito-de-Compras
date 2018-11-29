@@ -1,5 +1,12 @@
 <?php
+/*
+Clase Product Controller 
+Controllador de los Productos,
+Las acciones que se dan en esta clase Productos
+son Agregar Modifica Eliminar y la Vista de los productos.
+*/
 
+//Instancia
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -13,10 +20,11 @@ use App\Category;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar una lista del recurso.
      *
      * @return Response
      */
+    //La funcion principal, la que se toma de primero en esta clase para redireccionar a la vista Productos.
     public function index()
     {
         $products = Product::orderBy('id', 'desc')->paginate(5);
@@ -25,10 +33,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un nuevo recurso..
      *
      * @return Response
      */
+
+    //Funcion crear los datos de los productos
     public function create()
     {
         $categories = Category::orderBy('id', 'desc')->lists('name', 'id');
@@ -37,11 +47,13 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacenar un recurso recién creado en el almacenamiento.
      *
      * @param  Request  $request
      * @return Response
      */
+
+    //Funcion que crea los productos con sus respectivos datos
     public function store(SaveProductRequest $request)
     {
         $data = [
@@ -63,22 +75,24 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar el recurso especificado.
      *
      * @param  int  $id
      * @return Response
      */
+    //Muestra todos los productos cn sus reespectivos datos
     public function show(Product $product)
     {
         return $product;
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para editar el recurso especificado.
      *
      * @param  int  $id
      * @return Response
      */
+    //Funcion que muestra y da la opcion de editar el producto
     public function edit(Product $product)
     {
         $categories = Category::orderBy('id', 'desc')->lists('name', 'id');
@@ -87,12 +101,13 @@ class ProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar el recurso especificado en el almacenamiento.
      *
      * @param  Request  $request
      * @param  int  $id
      * @return Response
      */
+    //Funcion que nos permite modificar los datos de los productos enlazada a la funcio anterior
     public function update(SaveProductRequest $request, Product $product)
     {
         $product->fill($request->all());
@@ -107,11 +122,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar el recurso especificado del almacenamiento.
      *
      * @param  int  $id
      * @return Response
      */
+    //FUNCION QUE ELIMINA ALGUN PRODUCTO EN ESPECIFICO
     public function destroy(Product $product)
     {
         $deleted = $product->delete();
