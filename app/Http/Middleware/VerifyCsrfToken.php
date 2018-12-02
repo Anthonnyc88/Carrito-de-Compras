@@ -1,5 +1,5 @@
 <?php
-/*Verficamos el token 
+/*Verficamos el token del producto
 */
 //Instancia
 namespace App\Http\Middleware;
