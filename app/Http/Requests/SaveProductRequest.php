@@ -1,5 +1,7 @@
 <?php
-
+/* Clase Save Products 
+Guarda los datos de los productos*/
+//Instancia
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
@@ -7,7 +9,7 @@ use App\Http\Requests\Request;
 class SaveProductRequest extends Request
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine si el usuario está autorizado para hacer esta solicitud.
      *
      * @return bool
      */
@@ -17,10 +19,11 @@ class SaveProductRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Obtener las reglas de validación que se aplican a la solicitud
      *
      * @return array
      */
+    //Datos de la tabla 
     public function rules()
     {
         return [

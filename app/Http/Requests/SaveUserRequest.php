@@ -1,13 +1,14 @@
 <?php
-
+//Instancia
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
+//Clase Guadar los datos del usuario
 class SaveUserRequest extends Request
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine si el usuario está autorizado para realizar esta solicitud. .
      *
      * @return bool
      */
@@ -17,10 +18,11 @@ class SaveUserRequest extends Request
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Obtener las reglas de validación que se aplican a la solicitud
      *
      * @return array
      */
+    //Reglas que debe de tener el registro del cliente a la hora de ingrasar los datos 
     public function rules()
     {
         return [
