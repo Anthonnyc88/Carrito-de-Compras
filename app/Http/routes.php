@@ -141,10 +141,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth'], 'prefix' => 'adm
 	    'as' => 'admin.order.destroy',
 	    'uses' => 'OrderController@destroy'
 	]);
-	Route::get('buy', [
-		'as' => 'buy',
-		'uses' => 'CartController@saveOrder'
-]);
 
 });
 
