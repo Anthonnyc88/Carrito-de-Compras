@@ -4,7 +4,7 @@
 	<div class="container text-center">
 
 		<div class="page-header">
-		  <h1><i class="fa fa-user"></i> Registrarse</h1>
+		  <h1><i class="fa fa-user"></i> Registrarse a la tienda en linea</h1>
 		</div>
 
 		<div class="row">
