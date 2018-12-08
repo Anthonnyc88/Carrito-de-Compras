@@ -83,4 +83,40 @@ class CartController extends Controller
 
         return view('store.order-detail', compact('cart', 'total'));
     }
+    public function saveOrder()
+{
+$cart = \Session::get('cart');
+$subtotal = 0;
+foreach($cart as $item){
+$subtotal += $item->price * $item->quantity;
 }
+
+$order = Order::create([
+'subtotal' => $subtotal,
+'shipping' => 100,
+'user_id' => \Auth::user()->id
+]);
+
+foreach($cart as $item){
+$this->saveOrderItem($item, $order->id);
+}
+return redirect()->route('cart-show');
+}
+
+private function saveOrderItem($item, $order_id)
+{
+OrderItem::create([
+'quantity' => $item->quantity,
+'price' => $item->price,
+'product_id' => $item->id,
+'order_id' => $order_id
+]);
+}
+
+
+
+
+
+}
+
+
