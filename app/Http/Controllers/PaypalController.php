@@ -1,5 +1,5 @@
 <?php 
-
+//Instancia
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesCommands;
@@ -22,18 +22,20 @@ use PayPal\Api\Transaction;
 use App\Order;
 use App\OrderItem;
 
+//Controlador de la compra por medio de paypal
 class PaypalController extends BaseController
 {
 	private $_api_context;
 
 	public function __construct()
 	{
-		// setup PayPal api context
+		//configurar el contexto de la API de PayPal
 		$paypal_conf = \Config::get('paypal');
 		$this->_api_context = new ApiContext(new OAuthTokenCredential($paypal_conf['client_id'], $paypal_conf['secret']));
 		$this->_api_context->setConfig($paypal_conf['settings']);
 	}
 
+	//Enviamos el pago en paypal
 	public function postPayment()
 	{
 		$payer = new Payer();
@@ -104,11 +106,11 @@ class PaypalController extends BaseController
 			}
 		}
 
-		// add payment ID to session
+		// agregar ID de pago a la sesión
 		\Session::put('paypal_payment_id', $payment->getId());
 
 		if(isset($redirect_url)) {
-			// redirect to paypal
+			// redirigir a paypal
 			return \Redirect::away($redirect_url);
 		}
 
@@ -119,10 +121,11 @@ class PaypalController extends BaseController
 
 	public function getPaymentStatus()
 	{
-		// Get the payment ID before session clear
+		// Obtenga la identificación de pago antes de la sesión clara
 		$payment_id = \Session::get('paypal_payment_id');
 
-		// clear the session payment ID
+		//borrar el ID de pago de la sesión
+
 		\Session::forget('paypal_payment_id');
 
 		$payerId = \Input::get('PayerID');
@@ -136,14 +139,15 @@ class PaypalController extends BaseController
 
 		$payment = Payment::get($payment_id, $this->_api_context);
 
-		// PaymentExecution object includes information necessary 
-		// to execute a PayPal account payment. 
-		// The payer_id is added to the request query parameters
-		// when the user is redirected from paypal back to your site
+
+		// El objeto PaymentExecution incluye información necesaria
+		// para ejecutar un pago de cuenta de PayPal.
+		// El payer_id se agrega a los parámetros de consulta de solicitud
+		// cuando el usuario es redirigido desde paypal a su sitio
 		$execution = new PaymentExecution();
 		$execution->setPayerId(\Input::get('PayerID'));
 
-		//Execute the payment
+		//Ejecutar el pago
 		$result = $payment->execute($execution, $this->_api_context);
 
 		//echo '<pre>';print_r($result);echo '</pre>';exit; // DEBUG RESULT, remove it later
@@ -168,7 +172,8 @@ class PaypalController extends BaseController
 			->with('message', 'La compra fue cancelada');
 	}
 
-
+	//Guardamos la compra que realizamos (Carrito de compras), la compra incluye el 
+	//gasto total productos que ingresamos al carrito.
 	private function saveOrder($cart)
 	{
 	    $subtotal = 0;
@@ -186,7 +191,7 @@ class PaypalController extends BaseController
 	        $this->saveOrderItem($item, $order->id);
 	    }
 	}
-	
+	//Guardamos los productos en el carrito de compras
 	private function saveOrderItem($item, $order_id)
 	{
 		OrderItem::create([
