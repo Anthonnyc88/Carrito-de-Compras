@@ -10,7 +10,8 @@ class Category extends Model
 
 	protected $fillable = ['name', 'slug', 'description', 'color'];
 
-	public $timestamps = false;
+    public $timestamps = false;
+    ///affafa
     
     public function products()
     {
