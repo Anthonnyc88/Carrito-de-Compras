@@ -22,7 +22,7 @@
 					</h3>
 					<p>
 						<a class="btn btn-warning btn-block" href="{{ route('cart-add', $product->slug) }}">
-							Añadir al carrito <i class="fa fa-cart-plus fa-2x"></i>
+							La quiero <i class="fa fa-cart-plus fa-2x"></i>
 						</a>
 					</p>
 				</div>
