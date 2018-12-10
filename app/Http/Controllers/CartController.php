@@ -111,7 +111,7 @@ class CartController extends Controller
     foreach($cart as $item){
     $this->saveOrderItem($item, $order->id);
     }
-    return redirect()->route('cart-show');
+    return redirect()->route('home');
     }
 
     //Salvar la orden del carrio con sus datos dentro

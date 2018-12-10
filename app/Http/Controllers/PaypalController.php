@@ -133,6 +133,7 @@ class PaypalController extends BaseController
 	}
 	private function saveOrder($cart)
 	{
+		Session::forget('cart');
 	    $subtotal = 0;
 	    foreach($cart as $item){
 	        $subtotal += $item->price * $item->quantity;
