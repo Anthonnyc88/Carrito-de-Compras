@@ -15,9 +15,9 @@
 					<h3><span class="label label-success">Precio: ${{ number_format($product->price,2) }}</span></h3>
 					<p>
 						<a class="btn btn-warning" href="{{ route('cart-add', $product->slug) }}">
-							<i class="fa fa-cart-plus"></i> La quiero
+							<i class="fa fa-cart-plus"></i> Añadir al Carrito
 						</a>
-						<a class="btn btn-primary" href="{{ route('product-detail', $product->slug) }}"><i class="fa fa-chevron-circle-right"></i> Leer mas</a>
+						<a class="btn btn-primary" href="{{ route('product-detail', $product->slug) }}"><i class="fa fa-chevron-circle-right"></i> Detalles producto</a>
 					</p>
 				</div>
 			</div>

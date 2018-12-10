@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">Navigator</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ route('cart-show') }}"><i class="fa fa-shopping-cart"></i></a></li>
         <li><a href="#">Conocenos</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Contactanos</a></li>
         @include('store.partials.menu-user')
       </ul>
     </div>

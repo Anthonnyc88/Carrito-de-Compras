@@ -1,6 +1,10 @@
 body
 {
-	background: orange;
+	background: #0575E6;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to top, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to top, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
+
 	font-family: 'Poiret One', cursive;
 }
 
@@ -12,14 +16,14 @@ h1,h2,h3,h4,h5,h6
 /* Nav ----------*/
 .main-title
 {
-	color: orange !important;
+	color: rgb(42, 15, 194) !important;
 	font-size: 26px;
 }
 
 /* Footer -------*/
 footer
 {
-	background: #222;
+	background: rgb(2, 2, 2);
 	text-align: center;
 }
 
@@ -35,12 +39,12 @@ ul.redes li
 
 ul.redes li a
 {
-	color: orange;
+	color: rgb(233, 53, 7);
 }
 
 .avatar
 {
-	border: 5px solid orange;
+	background: rgb(12, 12, 12);
 	border-radius: 50%;
 	float: left;
 	height: 100px;
@@ -61,7 +65,7 @@ height: auto;
 .white-panel {
 position: absolute;
 background: white;
-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 padding: 10px;
 }
 .white-panel h1 {
@@ -71,7 +75,7 @@ font-size: 1em;
 color: #A92733;
 }
 .white-panel:hover {
-box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.959);
 margin-top: -5px;
 -webkit-transition: all 0.3s ease-in-out;
 -moz-transition: all 0.3s ease-in-out;
@@ -96,7 +100,7 @@ transition: all 0.3s ease-in-out;
 /* Carrito -----------*/
 .table-cart
 {
-	background: #fff;
+	background: rgb(15, 4, 112);
 	border-radius: 1em;
 	margin-bottom: 30px;
 	padding: 1em;
