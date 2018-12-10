@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Order;
+use App\OrderItem;
 
 //clase controller Carrito compras
 class CartController extends Controller
@@ -91,7 +93,7 @@ class CartController extends Controller
 
         return view('store.order-detail', compact('cart', 'total'));
     }
-    //Guardar el proceso del carrito
+    //Guardar el proceso del carrito en la base de datos
     public function saveOrder()
     {
     $cart = \Session::get('cart');

@@ -86,6 +86,15 @@ Route::post('auth/register', [
 	'as' => 'register-post',
 	'uses' => 'Auth\AuthController@postRegister'
 ]);
+//Ruta Compra corriente
+// Enviamos nuestro pedido a la base de datos
+Route::get('Carrito', array(
+	'as' => 'Carrito',
+	'uses' => 'CartController@saveOrder',
+));
+Route::get('Compra_Registrada', function(){
+return view ("store.Compra_Registrada");
+});
 // Paypal
 // Enviamos nuestro pedido a PayPal
 Route::get('payment', array(

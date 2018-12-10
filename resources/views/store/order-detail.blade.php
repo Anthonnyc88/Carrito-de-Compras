@@ -46,8 +46,12 @@
 					</a>
 
 					<a href="{{ route('payment') }}" class="btn btn-warning">
-						Pagar con <i class="fa fa-cc-paypal fa-2x"></i>
+						Pagar con Paypal<i class="fa fa-cc-paypal fa-2x"></i>
 					</a>
+					<a href="{{ route('Carrito') }}" class="btn btn-warning">
+						Pagar Corriente
+					</a>
+					
 				</p>
 			</div>
 		</div>

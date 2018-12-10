@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
 
-//clase controller Carrito compras
+//clase controller Compra del carrito
 class BuyController extends Controller
 {
 	public function __construct()
