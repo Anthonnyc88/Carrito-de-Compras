@@ -58,10 +58,11 @@ Route::get('order-detail', [
 	'uses' => 'CartController@orderDetail'
 ]);
 
-Route::get('buy', [
-	'as' => 'buy',
-	'uses' => 'CartController@saveOrder'
-	]);
+//Guardamos la compra del carrito
+//Route::get('cart/show', [
+//	'as' => 'cart/show',
+//	'uses' => 'CartController@saveOrder'
+//	]);
 
 // Authentication routes...
 Route::get('auth/login', [
