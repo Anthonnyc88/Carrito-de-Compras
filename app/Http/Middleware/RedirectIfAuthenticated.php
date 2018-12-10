@@ -41,6 +41,9 @@ class RedirectIfAuthenticated
         if ($this->auth->check()) {
             return redirect('/home');
         }
+        else if($this->auth->check()){
+            return redirect('/admin');
+        }
 
         return $next($request);
     }
