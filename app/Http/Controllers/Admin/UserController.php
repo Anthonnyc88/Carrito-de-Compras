@@ -1,5 +1,12 @@
 <?php
 
+/*
+Clase User Controller
+Controllador de los Usuarios,
+Las acciones que se dan en esta clase Productos
+son Agregar Modifica Eliminar y la Vista de los productos.
+*/
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -12,10 +19,11 @@ use App\User;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar una lista del recurso.
      *
      * @return Response
      */
+    //La funcion principal, la que se toma de primero en esta clase para redireccionar a la vista Usuarios.
     public function index()
     {
         $users = User::orderBy('name')->paginate(5);
@@ -24,21 +32,23 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un nuevo recurso..
      *
      * @return Response
      */
+    //Crea un nuevo usuario y guarda la informacion en la base de datos, redirecciona a la vista registrarse
     public function create()
     {
         return view('admin.user.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacenar un recurso recién creado en el almacenamiento.
      *
      * @param  Request  $request
      * @return Response
      */
+    //Funcion que registra a un usuario o cliente a la base de datos
     public function store(SaveUserRequest $request)
     {
         $data = [
@@ -60,7 +70,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar el recurso especificado.
      *
      * @param  int  $id
      * @return Response
@@ -71,18 +81,19 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para editar el recurso especificado.
      *
      * @param  int  $id
      * @return Response
      */
+    //Modificar datos del usuario
     public function edit(User $user)
     {
         return view('admin.user.edit', compact('user'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar el recurso especificado en el almacenamiento.
      *
      * @param  Request  $request
      * @param  int  $id
@@ -121,6 +132,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
+    //Funcion que elimina a un usuario de la base de datos
     public function destroy(User $user)
     {
         $deleted = $user->delete();

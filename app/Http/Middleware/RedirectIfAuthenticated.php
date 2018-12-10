@@ -1,21 +1,25 @@
 <?php
 
+/*Clase Redirect Authenticated 
+Valida y Redirecciona los datos a la hora de guardarlos a la base de datos
+*/
+//Instancia
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-
+//Authenticacion de los datos 
 class RedirectIfAuthenticated
 {
     /**
-     * The Guard implementation.
+     * La implementación del guardar.
      *
      * @var Guard
      */
     protected $auth;
 
     /**
-     * Create a new filter instance.
+     * Crear una nueva instancia de filtro.
      *
      * @param  Guard  $auth
      * @return void
@@ -26,7 +30,7 @@ class RedirectIfAuthenticated
     }
 
     /**
-     * Handle an incoming request.
+     * Manejar una solicitud entrante.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

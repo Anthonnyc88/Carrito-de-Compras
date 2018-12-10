@@ -4,7 +4,7 @@
 	
 	<div class="container text-center">
 		<div class="page-header">
-			<h1><i class="fa fa-shopping-cart"></i> Detalle de la pedido</h1>
+			<h1><i class="fa fa-shopping-cart"></i> Detalle del pedido</h1>
 		</div>
 
 		<div class="page">

@@ -1,5 +1,6 @@
 <?php
-
+/*Controlador principal
+*/
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;

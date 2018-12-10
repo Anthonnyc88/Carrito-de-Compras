@@ -1,5 +1,5 @@
 <?php
-
+//Instancia
 namespace App\Http\Middleware;
 
 use Closure;
@@ -8,14 +8,14 @@ use Illuminate\Contracts\Auth\Guard;
 class Authenticate
 {
     /**
-     * The Guard implementation.
+     * La implementación o mejor dicho autenticacion
      *
      * @var Guard
      */
     protected $auth;
 
     /**
-     * Create a new filter instance.
+     * Crear una nueva instancia de filtro.
      *
      * @param  Guard  $auth
      * @return void
@@ -26,12 +26,16 @@ class Authenticate
     }
 
     /**
-     * Handle an incoming request.
+     * Manejar una solicitud entrante.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @return mixed
      */
+
+    //Funcion que se encanrga de verficar si es tanto cliente como administrador 
+    //ademas de validar el redireccionarlo a la vista indicada
+      
     public function handle($request, Closure $next)
     {
         if ($this->auth->guest()) {

@@ -43,6 +43,11 @@ Route::get('cart/show', [
 	'uses' => 'CartController@show'
 ]);
 
+Route::get('cart/show', [
+	'as' => 'cart-show',
+	'uses' => 'CartController@saveOrder'
+]);
+
 Route::get('cart/add/{product}', [
 	'as' => 'cart-add',
 	'uses' => 'CartController@add'
@@ -69,6 +74,10 @@ Route::get('order-detail', [
 	'uses' => 'CartController@orderDetail'
 ]);
 
+Route::get('buy', [
+	'as' => 'buy',
+	'uses' => 'CartController@saveOrder'
+	]);
 
 // Authentication routes...
 Route::get('auth/login', [
