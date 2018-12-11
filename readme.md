@@ -1,5 +1,4 @@
-#Tienda en línea con Bootstrap, Laravel 5.1 y la API de Paypal
-
+#Tienda en línea PuertoCel
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
